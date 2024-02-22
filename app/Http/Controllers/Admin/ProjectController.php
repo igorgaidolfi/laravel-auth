@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -27,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.projects.create');
     }
 
     /**
@@ -38,7 +39,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $form_data = $request->all();
+        $proj = new Project();
+        $proj->title = $form_data['title'];
+        $slug = Str::slug($proj->title,'-');
+        $proj->slug = $slug;
+        $proj->content = $form_data['content'];
+        $proj->save();
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**

@@ -21,3 +21,8 @@ Eseguite un passaggio per volta, non preoccupatevi molto della grafica al moment
 L'esercizio viene considerato svolto se fate anche le rotte index e show per i progetti.
 Bonus:
 Personalizzare la grafica del gestionale.
+
+DAY 2
+Ciao a tutti,
+continuate con l'esercizio di ieri (stessa repo) facendo le crud rimanenti. Per la cancellazione è considerato esercizio base se la fate con la confirm all'onsubmit.
+BONUS: create una modale con cui chiedere conferma della cancellazione. Scegliete uno dei due metodi per visti a lezione.

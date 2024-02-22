@@ -5,7 +5,7 @@
         <div class="col-12 d-flex justify-content-between align-items-center my-2">
             <h1>Projects</h1>
             <div>
-                <a href="" class="btn btn-primary">Add project</a>
+                <a href="{{route('admin.projects.create')}}" class="btn btn-primary">Add project</a>
             </div>
         </div>
         <div class="col-12">
