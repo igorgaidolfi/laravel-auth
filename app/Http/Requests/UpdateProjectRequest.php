@@ -13,7 +13,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|max:120|unique:projects',
+            'content' => 'required|min:20'
+        ];
+    }
+    
+    public function messages()
+    {
+        return[
+            'title.required' => 'Il titolo e\' richiesto',
+            'title.max' => 'Il titolo puo\' contenere al massimo 120 caratteri',
+            'title.unique' => 'Questo titolo e\' gia\' stato utilizzato',
+            'content.required' => 'Il contenuto e\' obbligatorio',
+            'content.min' => 'Il contenuto deve contenere minimo 20 caratteri'
         ];
     }
 }

@@ -5,7 +5,9 @@
         <div class="col-12 d-flex justify-content-between align-items-center my-2">
             <h1>Project {{$project->id}}</h1>
             <div>
-                <a href="{{route('admin.projects.edit')}}"></a>
+                <a href="{{route('admin.projects.edit', ['project' => $project->id])}}" 
+                    class="btn btn-warning">Edit
+                </a>
             </div>
         </div>
         <div>

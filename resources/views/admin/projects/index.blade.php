@@ -16,7 +16,7 @@
                         <th>Title</th>
                         <th>Content</th>
                         <th>Slug</th>
-                        <th>Page</th>
+                        <th class="text-center">Page</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,8 @@
                         <td>{{$proj->slug}}</td>
                         <td>{{Str::limit($proj->content, 25, '...');}}</td>
                         <td>
-                            <a href="{{route('admin.projects.show', ['project' => $proj->id])}}" class="btn btn-info">More</button>
+                            <a href="{{route('admin.projects.show', ['project' => $proj->id])}}" class="btn btn-info">More</a>
+                            <a href="{{route('admin.projects.edit', ['project' => $proj->id])}}" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
                     @endforeach
