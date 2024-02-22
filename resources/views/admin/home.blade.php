@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
+        Paperino
     </h2>
     <div class="row justify-content-center">
         <div class="col">
@@ -16,8 +16,6 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
