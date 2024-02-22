@@ -9,14 +9,14 @@
             </div>
         </div>
         <div class="col-12">
-            <table class="table table-striped">
+            <table class="table table-striped ">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
-                        <th>Content</th>
                         <th>Slug</th>
-                        <th class="text-center">Page</th>
+                        <th>Content</th>
+                        <th>Page</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,9 +26,15 @@
                         <td>{{$proj->title}}</td>
                         <td>{{$proj->slug}}</td>
                         <td>{{Str::limit($proj->content, 25, '...');}}</td>
-                        <td>
-                            <a href="{{route('admin.projects.show', ['project' => $proj->id])}}" class="btn btn-info">More</a>
-                            <a href="{{route('admin.projects.edit', ['project' => $proj->id])}}" class="btn btn-warning">Edit</a>
+                        <td class="d-flex ">
+                            <a href="{{route('admin.projects.show', ['project' => $proj->id])}}" class="btn btn-info mx-1">More</a>
+                            <a href="{{route('admin.projects.edit', ['project' => $proj->id])}}" class="btn btn-warning mx-1">Edit</a>
+                            <form action="{{route('admin.projects.destroy', ['project'=>$proj->id])}}" method="post"
+                                onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger mx-1">Delete</button>                                
+                            </form>
                         </td>
                     </tr>
                     @endforeach
