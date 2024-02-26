@@ -12,6 +12,11 @@
         </div>
         <div>
             <h1>{{$project->title}}</h1>
+            @if($project->img != null)
+                <img src="{{asset('/storage/' . $project->img)}}" alt="{{$project->title}}" width="350">
+            @else
+                <img src="{{asset('/img/aaaa.jpg')}}" alt="{{$project->title}}" width="350">
+            @endif
             <h3>{{$project->slug}}</h3>
             <p>{{$project->content}}</p>
         </div>

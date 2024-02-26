@@ -14,7 +14,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{route('admin.projects.update', $project->id)}}" method="post">
+        <form action="{{route('admin.projects.update', $project->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group mb-3">
@@ -23,9 +23,13 @@
                     required value="{{old('title') ?? $project->title}}">
             </div>
             <div class="form-group mb-3">
-                <label for="thumb" class="form-label">Immagine</label>
-                <input type="text" class="form-control" id="thumb" name="thumb" placeholder="URL"
-                    value="{{old('img') ?? $project->img}}">
+                @if ($project->img != null)
+                <div class="mb-3">
+                    <img src="{{asset('/storage/' . $project->img)}}" alt="{{$project->title}}" width="350">                    
+                </div>
+                @endif
+                <label for="img" class="form-label">Immagine</label>
+                <input type="file" class="form-control" id="img" name="img">
             </div>
             <div class="form-group mb-3">
                 <label for="content" class="form-label">Contenuto</label>

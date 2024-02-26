@@ -88,6 +88,13 @@ class ProjectController extends Controller
     {
         $form_data = $request->all();
         $project->title = $form_data['title'];
+        if($request->hasFile('img')){
+            if($project->img != null){
+                Storage::disk('public')->delete($project->img);
+            }
+            $path= Storage::disk('public')->put('project_image', $form_data['img']);
+                $project->img = $path;
+            }
         $slug = Str::slug($form_data['title'],'-');
         $project->slug = $slug;
         $project->content = $form_data['content'];
@@ -104,6 +111,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if($project->img != null){
+            Storage::disk('public')->delete($project->img);
+        }
         $project->delete();
         return redirect()->route('admin.projects.index');
     }
