@@ -14,7 +14,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{route('admin.projects.store')}}" method="post">
+        <form action="{{route('admin.projects.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-3">
                 <label for="title" class="form-label">Titolo</label>
@@ -22,9 +22,8 @@
                     required value="{{old('title')}}">
             </div>
             <div class="form-group mb-3">
-                <label for="thumb" class="form-label">Immagine</label>
-                <input type="text" class="form-control" id="thumb" name="thumb" placeholder="URL"
-                    value="{{old('img')}}">
+                <label for="img" class="form-label">Immagine</label>
+                <input type="file" class="form-control" id="img" name="img" value="{{old('img')}}">
             </div>
             <div class="form-group mb-3">
                 <label for="content" class="form-label">Contenuto</label>
